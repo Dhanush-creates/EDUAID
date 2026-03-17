@@ -1,0 +1,36 @@
+{
+  "name": "eduai",
+  "version": "1.0.0",
+  "description": "AI-assisted scholarship discovery platform",
+  "private": true,
+  "author": "EduAI Contributors",
+  "license": "MIT",
+  "homepage": "https://YOUR_USERNAME.github.io/eduai",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/YOUR_USERNAME/eduai.git"
+  },
+  "bugs": {
+    "url": "https://github.com/YOUR_USERNAME/eduai/issues"
+  },
+  "keywords": [
+    "scholarship",
+    "india",
+    "education",
+    "government-schemes",
+    "ministry-of-education",
+    "nsp",
+    "aicte",
+    "eligibility",
+    "open-source"
+  ],
+  "scripts": {
+    "start":        "npx serve frontend/src -p 3000",
+    "dev":          "npx serve frontend/src -p 3000",
+    "backend":      "cd backend && node src/server.js",
+    "backend:dev":  "cd backend && npx nodemon src/server.js"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

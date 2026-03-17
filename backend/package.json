@@ -1,0 +1,27 @@
+{
+  "name": "eduai-backend",
+  "version": "1.0.0",
+  "description": "EduAI backend API — Stage 2",
+  "private": true,
+  "main": "src/server.js",
+  "scripts": {
+    "start":  "node src/server.js",
+    "dev":    "nodemon src/server.js"
+  },
+  "dependencies": {
+    "bcryptjs":  "^2.4.3",
+    "cors":      "^2.8.5",
+    "dotenv":    "^16.0.3",
+    "express":   "^4.18.2",
+    "helmet":    "^7.0.0",
+    "jsonwebtoken": "^9.0.0",
+    "mongoose":  "^7.4.0",
+    "morgan":    "^1.10.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,95 @@
+name: CI / Deploy
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+
+  # ────────────────────────────────────────────────────────────
+  # Job 1: Validate — runs on every push and every PR
+  # ────────────────────────────────────────────────────────────
+  validate:
+    name: Validate Project
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Check index.html exists
+        run: |
+          test -f frontend/src/index.html \
+            && echo "✅ index.html found" \
+            || (echo "❌ index.html missing" && exit 1)
+
+      - name: Check required data files
+        run: |
+          for f in \
+            frontend/src/data/schemes.js \
+            frontend/src/data/deadlines.js \
+            frontend/src/data/news.js \
+            frontend/src/data/exams.js \
+            frontend/src/data/colleges.js; do
+            test -f "$f" && echo "✅ $f" || (echo "❌ Missing: $f" && exit 1)
+          done
+
+      - name: Check required util files
+        run: |
+          for f in \
+            frontend/src/utils/eligibility.js \
+            frontend/src/utils/chat.js \
+            frontend/src/utils/helpers.js; do
+            test -f "$f" && echo "✅ $f" || (echo "❌ Missing: $f" && exit 1)
+          done
+
+      - name: Check required docs
+        run: |
+          for f in \
+            README.md \
+            LICENSE \
+            docs/ARCHITECTURE.md \
+            docs/CONTRIBUTING.md \
+            docs/ELIGIBILITY_LOGIC.md \
+            docs/CHANGELOG.md; do
+            test -f "$f" && echo "✅ $f" || (echo "❌ Missing: $f" && exit 1)
+          done
+
+  # ────────────────────────────────────────────────────────────
+  # Job 2: Deploy — runs only on push to main (not PRs)
+  # ────────────────────────────────────────────────────────────
+  deploy:
+    name: Deploy to Vercel
+    needs: validate
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Vercel CLI
+        run: npm install --global vercel@latest
+
+      - name: Pull Vercel environment info
+        env:
+          VERCEL_TOKEN:      ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID:     ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: vercel pull --yes --environment=production --token=$VERCEL_TOKEN
+
+      - name: Build
+        env:
+          VERCEL_TOKEN:      ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID:     ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: vercel build --prod --token=$VERCEL_TOKEN
+
+      - name: Deploy to production
+        env:
+          VERCEL_TOKEN:      ${{ secrets.VERCEL_TOKEN }}
+          VERCEL_ORG_ID:     ${{ secrets.VERCEL_ORG_ID }}
+          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+        run: vercel deploy --prebuilt --prod --token=$VERCEL_TOKEN

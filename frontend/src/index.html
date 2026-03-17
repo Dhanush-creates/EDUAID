@@ -1,0 +1,697 @@
+<!DOCTYPE html>
+<!--
+  ╔══════════════════════════════════════════════════════════════╗
+  ║  EduAI — Stage 1                                             ║
+  ║  Ministry of Education Schemes · Frontend-only               ║
+  ║  https://github.com/YOUR_USERNAME/eduai                      ║
+  ╚══════════════════════════════════════════════════════════════╝
+-->
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EduAI — AI-assisted scholarship discovery platform. Find every government scholarship you are eligible for in under 5 minutes.">
+  <meta name="keywords" content="scholarship india, NSP scholarship, education schemes, AICTE pragati, JRF fellowship">
+  <meta property="og:title" content="EduAI — AI-Assisted Scholarship Discovery">
+  <meta property="og:description" content="EduAI helps students discover scholarships faster with AI-assisted guidance.">
+  <title>EduAI — AI-Assisted Scholarship Discovery Platform</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- ── Stylesheets ── -->
+  <link rel="stylesheet" href="css/tokens.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/landing.css">
+  <link rel="stylesheet" href="css/sidebar.css">
+  <link rel="stylesheet" href="css/dashboard.css">
+  <link rel="stylesheet" href="css/chat.css">
+  <link rel="stylesheet" href="css/eligibility.css">
+  <link rel="stylesheet" href="css/schemes.css">
+  <link rel="stylesheet" href="css/modal.css">
+</head>
+
+<body>
+<div class="flag"><div></div><div></div><div></div></div>
+<div class="shell">
+
+
+<!-- ═══ LANDING ═══ -->
+<div class="page active" id="pg-land">
+  <nav class="lnav">
+      <div class="lbrand" onclick="goLand()">
+      <div class="lbmark">🎓</div>
+      <div class="lbn">Edu<span>AI</span></div>
+    </div>
+    <button class="lnav-cta" onclick="goApp()">Get Started Free →</button>
+  </nav>
+  <div style="overflow-y:auto;height:calc(100% - 64px);">
+
+    <!-- ── HERO ── -->
+    <div class="hero-wrap">
+      <!-- Floating ambient particles -->
+      <div class="hero-particles">
+        <div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div>
+        <div class="particle"></div><div class="particle"></div>
+      </div>
+      <div class="hero">
+        <!-- Left: copy -->
+        <div>
+          <div class="hbadge"><div class="hdot"></div>Ministry of Education · Govt. of India</div>
+          <h1 class="hh1">Find your <span class="ac">scholarship</span><br>the <span class="ug">smart</span> way</h1>
+          <p class="hsub">Tell us who you are — EduAI matches you with every scheme you actually qualify for, then guides you through applying step-by-step with AI assistance.</p>
+          <div class="hacts">
+            <button class="btnp" onclick="goApp()">🚀 Check My Eligibility</button>
+            <button class="btns" onclick="goApp(); setTimeout(()=>goPanel('schemes'),200)">📚 Browse Schemes</button>
+          </div>
+          <div class="hstats">
+            <div class="hstat-item"><div class="hstat-n">140<span>+</span></div><div class="hstat-l">Active Schemes</div></div>
+            <div class="hdiv"></div>
+            <div class="hstat-item"><div class="hstat-n">₹2<span>L+</span></div><div class="hstat-l">Avg Benefit/Year</div></div>
+            <div class="hdiv"></div>
+            <div class="hstat-item"><div class="hstat-n">28<span>+</span></div><div class="hstat-l">States Covered</div></div>
+          </div>
+        </div>
+
+        <!-- Right: animated card stack -->
+        <div class="hcard-w">
+          <!-- Shadow cards behind -->
+          <div class="hcard hc-b2"></div>
+          <div class="hcard hc-b1"></div>
+          <!-- Main card -->
+          <div class="hcard hc-main">
+            <div class="hc-lbl">🏆 Top Match for You</div>
+            <div class="hc-name">NSP Post-Matric Scholarship</div>
+            <div class="hc-by">National Scholarship Portal · Ministry of Education</div>
+            <div class="hc-amt">₹25,000 <span style="font-size:14px;color:var(--t3);font-weight:400">/ year</span></div>
+            <div class="hc-bar-wrap">
+              <div class="hc-bar-top"><span>Eligibility Match</span><span>92%</span></div>
+              <div class="hc-bar"><div class="hc-bar-fill"></div></div>
+            </div>
+            <div class="hc-tags">
+              <div class="hc-tag b-sf">OBC / SC / ST</div>
+              <div class="hc-tag b-gn">Income &lt; ₹2.5L</div>
+              <div class="hc-tag b-bl">Class 11 – PhD</div>
+            </div>
+            <button class="hc-apply" onclick="goApp()">Apply on scholarships.gov.in →</button>
+          </div>
+          <!-- Floating notification chips -->
+          <div class="float-chip fc1"></div>
+          <div class="float-chip fc2"></div>
+          <div class="float-chip fc3"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── MARQUEE STRIP (scrolling schemes ticker) ── -->
+    <div class="marquee-strip">
+      <div class="marquee-track">
+        <div class="marquee-item"><div class="marquee-dot" style="background:#E8610A"></div><span>NSP Post-Matric</span> · ₹25,000/yr</div>
+        <div class="marquee-item"><div class="marquee-dot" style="background:#B8860B"></div><span>AICTE Pragati</span> · ₹50,000/yr</div>
+        <div class="marquee-item"><div class="marquee-dot" style="background:#1A3FC4"></div><span>INSPIRE</span> · ₹80,000/yr</div>
+        <div class="marquee-item"><div class="marquee-dot" style="background:#6D28D9"></div><span>CSIR-UGC JRF</span> · ₹37,000/mo</div>
+        <div class="marquee-item"><div class="marquee-dot" style="background:#0A7A2E"></div><span>PM Research Fellowship</span> · ₹80,000/mo</div>
+        <div class="marquee-item"><div class="marquee-dot" style="background:#BE185D"></div><span>Begum Hazrat Mahal</span> · ₹12,000/yr</div>
+        <div class="marquee-item"><div class="marquee-dot" style="background:#E8610A"></div><span>Central Sector</span> · ₹20,000/yr</div>
+        <div class="marquee-item"><div class="marquee-dot" style="background:#B8860B"></div><span>Ishan Uday</span> · ₹7,800/mo</div>
+        <div class="marquee-item"><div class="marquee-dot" style="background:#1A3FC4"></div><span>PM-YASASVI</span> · ₹1.25L/yr</div>
+        <div class="marquee-item"><div class="marquee-dot" style="background:#6D28D9"></div><span>Maulana Azad Fellowship</span> · ₹28,000/mo</div>
+        <div class="marquee-item"><div class="marquee-dot" style="background:#0A7A2E"></div><span>AICTE Saksham</span> · ₹30,000/yr</div>
+        <div class="marquee-item"><div class="marquee-dot" style="background:#E8610A"></div><span>NSP Pre-Matric</span> · ₹5,000/yr</div>
+        <!-- Duplicate for seamless infinite loop -->
+        <div class="marquee-item"><div class="marquee-dot" style="background:#E8610A"></div><span>NSP Post-Matric</span> · ₹25,000/yr</div>
+        <div class="marquee-item"><div class="marquee-dot" style="background:#B8860B"></div><span>AICTE Pragati</span> · ₹50,000/yr</div>
+        <div class="marquee-item"><div class="marquee-dot" style="background:#1A3FC4"></div><span>INSPIRE</span> · ₹80,000/yr</div>
+        <div class="marquee-item"><div class="marquee-dot" style="background:#6D28D9"></div><span>CSIR-UGC JRF</span> · ₹37,000/mo</div>
+        <div class="marquee-item"><div class="marquee-dot" style="background:#0A7A2E"></div><span>PM Research Fellowship</span> · ₹80,000/mo</div>
+        <div class="marquee-item"><div class="marquee-dot" style="background:#BE185D"></div><span>Begum Hazrat Mahal</span> · ₹12,000/yr</div>
+        <div class="marquee-item"><div class="marquee-dot" style="background:#E8610A"></div><span>Central Sector</span> · ₹20,000/yr</div>
+        <div class="marquee-item"><div class="marquee-dot" style="background:#B8860B"></div><span>Ishan Uday</span> · ₹7,800/mo</div>
+        <div class="marquee-item"><div class="marquee-dot" style="background:#1A3FC4"></div><span>PM-YASASVI</span> · ₹1.25L/yr</div>
+        <div class="marquee-item"><div class="marquee-dot" style="background:#6D28D9"></div><span>Maulana Azad Fellowship</span> · ₹28,000/mo</div>
+        <div class="marquee-item"><div class="marquee-dot" style="background:#0A7A2E"></div><span>AICTE Saksham</span> · ₹30,000/yr</div>
+        <div class="marquee-item"><div class="marquee-dot" style="background:#E8610A"></div><span>NSP Pre-Matric</span> · ₹5,000/yr</div>
+      </div>
+    </div>
+
+    <!-- ── HOW IT WORKS ── -->
+    <div class="fsec">
+      <div class="secin">
+        <div class="sec-lbl anim-reveal">How It Works</div>
+        <h2 class="sec-h anim-reveal">Scholarship found in &lt;5 minutes</h2>
+        <p class="sec-sub anim-reveal">No jargon. No confusing portals. Just tell us about yourself.</p>
+        <div class="fgrid">
+          <div class="fc anim-card">
+            <div class="fc-ico" style="background:var(--sfl)">👤</div>
+            <div class="fc-t">1. Build Your Profile</div>
+            <div class="fc-d">Name, state, category, class, income — 2 minutes, no Aadhaar needed.</div>
+          </div>
+          <div class="fc anim-card">
+            <div class="fc-ico" style="background:var(--gnl)">🔍</div>
+            <div class="fc-t">2. AI Matches Schemes</div>
+            <div class="fc-d">Real eligibility engine checks 140+ schemes using your actual criteria.</div>
+          </div>
+          <div class="fc anim-card">
+            <div class="fc-ico" style="background:var(--bll)">📋</div>
+            <div class="fc-t">3. Apply Step-by-Step</div>
+            <div class="fc-d">Exact documents, portal links, deadlines and guidance — all in one place.</div>
+          </div>
+          <div class="fc anim-card">
+            <div class="fc-ico" style="background:var(--gdl)">🗞️</div>
+            <div class="fc-t">Live Education News</div>
+            <div class="fc-d">Latest MoE notifications, new scheme launches, policy changes.</div>
+          </div>
+          <div class="fc anim-card">
+            <div class="fc-ico" style="background:var(--rdl)">📅</div>
+            <div class="fc-t">Exam Calendar</div>
+            <div class="fc-d">JEE, NEET, CUET, NET — all exam dates, admit cards and results.</div>
+          </div>
+          <div class="fc anim-card">
+            <div class="fc-ico" style="background:var(--pul)">🧮</div>
+            <div class="fc-t">Scholarship Calculator</div>
+            <div class="fc-d">Estimate how much you can earn in scholarships over your degree.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── CTA ── -->
+    <div class="cta-sec">
+      <div class="cta-orb cta-orb1"></div>
+      <div class="cta-orb cta-orb2"></div>
+      <div class="cta-in">
+        <span class="cta-flag">🇮🇳</span>
+        <h2 class="cta-h anim-reveal">Your education. Your right.</h2>
+        <p class="cta-sub anim-reveal">Thousands miss scholarships every year simply because they don't know they exist. Don't be one of them.</p>
+        <button class="btnw anim-reveal" onclick="goApp()">🎓 Find My Schemes — It's Free</button>
+        <div class="cta-trust">
+          <div class="trust-badge anim-reveal">✅ Official Government Schemes</div>
+          <div class="trust-badge anim-reveal">🔒 No Sign-up Required</div>
+          <div class="trust-badge anim-reveal">⚡ Results in 30 Seconds</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ═══ APP ═══ -->
+<div class="page" id="pg-app">
+  <aside class="sb">
+    <div class="sb-head">
+      <div class="sb-brand" onclick="goLand()">
+        <div class="sbm">🎓</div>
+        <div class="sbn">Edu<span>AI</span></div>
+      </div>
+      <div class="sb-user" onclick="goPanel('profile')">
+        <div class="sbav" id="sbAv">S</div>
+        <div><div class="sb-uname" id="sbName">Student</div><div class="sb-ucls" id="sbCls">Set up profile →</div></div>
+      </div>
+    </div>
+    <div class="sb-nav">
+      <div class="slbl">Main</div>
+      <div class="ni active" data-panel="dashboard" onclick="goPanel('dashboard')"><div class="ni-ico">🏠</div>Dashboard</div>
+      <div class="ni" data-panel="chat" onclick="goPanel('chat')"><div class="ni-ico">🤖</div>AI Assistant<span class="nibadge nb-sf">Chat</span></div>
+      <div class="ni" data-panel="eligibility" onclick="goPanel('eligibility')"><div class="ni-ico">✅</div>Check Eligibility</div>
+      <div class="slbl">Schemes</div>
+      <div class="ni" data-panel="schemes" onclick="goPanel('schemes')"><div class="ni-ico">📚</div>All Schemes<span class="nibadge nb-sf">140</span></div>
+      <div class="ni" data-panel="deadlines" onclick="goPanel('deadlines')"><div class="ni-ico">📅</div>Deadlines<span class="nibadge nb-rd">3</span></div>
+      <div class="slbl">Education</div>
+      <div class="ni" data-panel="news" onclick="goPanel('news')"><div class="ni-ico">🗞️</div>Education News<span class="nibadge nb-gn">New</span></div>
+      <div class="ni" data-panel="exams" onclick="goPanel('exams')"><div class="ni-ico">📝</div>Exam Calendar</div>
+      <div class="ni" data-panel="calculator" onclick="goPanel('calculator')"><div class="ni-ico">🧮</div>Scholarship Calc</div>
+      <div class="ni" data-panel="compare" onclick="goPanel('compare')"><div class="ni-ico">🏛️</div>College Compare</div>
+      <div class="slbl">My Account</div>
+      <div class="ni" data-panel="profile" onclick="goPanel('profile')"><div class="ni-ico">👤</div>My Profile</div>
+    </div>
+    <div class="sb-foot">
+      <button class="sb-back" onclick="goLand()">← Back to Home</button>
+    </div>
+  </aside>
+
+  <div class="main">
+    <div class="abar">
+      <div class="ab-title" id="abTitle">🏠 Dashboard</div>
+      <div class="ab-r">
+        <div class="abchip"><div class="abdot"></div>Education Schemes Active</div>
+        <div class="abbtn" onclick="goPanel('chat')" title="AI Chat">🤖</div>
+        <div class="abbtn" onclick="goPanel('profile')" title="Profile">👤</div>
+      </div>
+    </div>
+
+    <!-- DASHBOARD -->
+    <div class="panel active" id="pn-dashboard">
+      <div class="dscroll">
+        <div class="wb">
+          <div class="wb-bg">🎓</div>
+          <div class="wb-tag">🌅 Welcome back!</div>
+          <div class="wb-h" id="wbName">Hello, Student! 👋</div>
+          <div class="wb-sub" id="wbSub">EduAI helps you discover scholarships faster. Complete your profile to get started.</div>
+          <div class="wbstats">
+            <div><div class="wbs-n" id="wb-matched">—</div><div class="wbs-l">Eligible Schemes</div></div>
+            <div style="margin-left:20px"><div class="wbs-n" id="wb-pot">—</div><div class="wbs-l">Max Potential/Year</div></div>
+            <div style="margin-left:20px"><div class="wbs-n">3</div><div class="wbs-l">Deadlines This Month</div></div>
+          </div>
+          <div class="wb-notice" id="wb-notice" style="display:none">⚠️ <span id="wb-notice-txt"></span></div>
+        </div>
+        <div id="no-prof-warn" class="no-profile-warn">
+          <div class="npw-ico">👤</div>
+          <div><div class="npw-t">Profile Incomplete</div><div class="npw-s">Add your details to see personalised eligibility matches</div></div>
+          <button class="npw-btn" onclick="document.getElementById('modal').classList.remove('hidden')">Set Up Now</button>
+        </div>
+        <div class="srow">
+          <div class="sc" onclick="goPanel('eligibility')">
+            <div class="sc-top"><div class="sc-ico" style="background:var(--sfl)">📚</div><div class="sc-chg" style="background:var(--bll);color:var(--bl)" id="sc-matched-chg">Check →</div></div>
+            <div class="sc-val" id="sc-matched">—</div><div class="sc-lbl">Eligible Schemes</div>
+          </div>
+          <div class="sc" onclick="goPanel('deadlines')">
+            <div class="sc-top"><div class="sc-ico" style="background:var(--rdl)">⏰</div><div class="sc-chg" style="background:var(--rdl);color:var(--rd)">Urgent</div></div>
+            <div class="sc-val" style="color:var(--rd)">3</div><div class="sc-lbl">Deadlines This Month</div>
+          </div>
+          <div class="sc">
+            <div class="sc-top"><div class="sc-ico" style="background:var(--gnl)">💰</div><div class="sc-chg" style="background:var(--gnl);color:var(--gn)">Best</div></div>
+            <div class="sc-val" style="color:var(--sf)" id="sc-pot">—</div><div class="sc-lbl">Potential/Year</div>
+          </div>
+          <div class="sc" onclick="goPanel('exams')">
+            <div class="sc-top"><div class="sc-ico" style="background:var(--pul)">📝</div><div class="sc-chg" style="background:var(--pul);color:var(--pu)">View</div></div>
+            <div class="sc-val" style="color:var(--pu)">12</div><div class="sc-lbl">Exams This Month</div>
+          </div>
+        </div>
+        <div class="twocol">
+          <div class="cbox">
+            <div class="cbt">⏰ Deadlines <button class="cbsee" onclick="goPanel('deadlines')">See all</button></div>
+            <div class="dli">
+              <div class="dldate" style="background:var(--rdl)"><div class="dld" style="color:var(--rd)">31</div><div class="dlm" style="color:var(--rd)">Oct</div></div>
+              <div><div class="dlname">NSP Post-Matric</div><div class="dlby">Ministry of Education</div></div>
+              <div class="dlpill" style="background:var(--rdl);color:var(--rd)">⚡ 8d</div>
+            </div>
+            <div class="dli">
+              <div class="dldate" style="background:var(--gdl)"><div class="dld" style="color:var(--gd)">15</div><div class="dlm" style="color:var(--gd)">Nov</div></div>
+              <div><div class="dlname">AICTE Pragati</div><div class="dlby">AICTE</div></div>
+              <div class="dlpill" style="background:var(--gdl);color:var(--gd)">23d</div>
+            </div>
+            <div class="dli">
+              <div class="dldate" style="background:var(--gnl)"><div class="dld" style="color:var(--gn)">30</div><div class="dlm" style="color:var(--gn)">Nov</div></div>
+              <div><div class="dlname">INSPIRE Scholarship</div><div class="dlby">DST</div></div>
+              <div class="dlpill" style="background:var(--gnl);color:var(--gn)">38d</div>
+            </div>
+          </div>
+          <div class="cbox">
+            <div class="cbt">🏆 Your Top Matches <button class="cbsee" onclick="goPanel('schemes')">All schemes</button></div>
+            <div id="dash-top-matches"><div style="text-align:center;padding:20px;color:var(--t3);font-size:13px">Complete your profile to see matches →</div></div>
+          </div>
+        </div>
+        <!-- TRENDING -->
+        <div class="cbox">
+          <div class="cbt">🔥 Trending — Students Are Looking For</div>
+          <div class="trend-tags">
+            <div class="tt" style="background:var(--sfl);color:var(--sf);border-color:rgba(232,97,10,.25)" onclick="sendQ('NSP Post-Matric Scholarship details');goPanel('chat')">📖 NSP Scholarship</div>
+            <div class="tt" style="background:var(--gdl);color:var(--gd);border-color:rgba(184,134,11,.25)" onclick="sendQ('AICTE Pragati for girl students');goPanel('chat')">🏛️ AICTE Pragati</div>
+            <div class="tt" style="background:var(--gnl);color:var(--gn);border-color:rgba(10,122,46,.25)" onclick="sendQ('Scholarships for SC ST students');goPanel('chat')">📚 SC/ST Schemes</div>
+            <div class="tt" style="background:var(--bll);color:var(--bl);border-color:rgba(26,63,196,.25)" onclick="sendQ('UGC JRF fellowship details');goPanel('chat')">🔬 UGC JRF</div>
+            <div class="tt" style="background:var(--pul);color:var(--pu);border-color:rgba(109,40,217,.25)" onclick="sendQ('How to apply for PMRF fellowship?');goPanel('chat')">🎓 PMRF Fellowship</div>
+            <div class="tt" style="background:var(--rdl);color:var(--rd);border-color:rgba(192,57,43,.25)" onclick="sendQ('How to get income certificate quickly?');goPanel('chat')">📄 Income Certificate</div>
+            <div class="tt" style="background:var(--pkl);color:var(--pk);border-color:rgba(190,24,93,.25)" onclick="sendQ('Scholarship for minority students');goPanel('chat')">☪️ Minority Schemes</div>
+            <div class="tt" style="background:var(--sfl);color:var(--sf);border-color:rgba(232,97,10,.25)" onclick="goPanel('exams')">📝 JEE/NEET Dates</div>
+          </div>
+        </div>
+        <!-- AI BANNER -->
+        <div class="aibanner" onclick="goPanel('chat')">
+          <div><div class="aib-tag">🤖 AI Powered</div><div class="aib-h">Describe yourself, get instant matches</div><div class="aib-s">Try: "I'm 20, OBC from UP, doing BTech, income 1.8 lakh" — I'll match you instantly</div></div>
+          <div class="aib-r">🤖</div>
+        </div>
+        <!-- TIPS -->
+        <div class="tiprow">
+          <div class="tipc" onclick="sendQ('What documents do I need for scholarships?');goPanel('chat')">
+            <div class="tipc-ico">📄</div><div class="tipc-t">Get Documents Early</div><div class="tipc-d">Income & caste certificates take 7–15 days. Start now before deadlines!</div>
+          </div>
+          <div class="tipc" onclick="sendQ('Can I apply for multiple scholarships?');goPanel('chat')">
+            <div class="tipc-ico">📚</div><div class="tipc-t">Apply to Multiple</div><div class="tipc-d">You can apply to multiple scholarships at once — don't miss any!</div>
+          </div>
+          <div class="tipc" onclick="goPanel('calculator')">
+            <div class="tipc-ico">🧮</div><div class="tipc-t">Calculate Your Benefit</div><div class="tipc-d">See how much you can earn over your full degree with our calculator.</div>
+          </div>
+        </div>
+        <!-- CHECKLIST -->
+        <div class="cbox">
+          <div class="cbt">📋 Application Checklist <button class="cbsee" onclick="goPanel('eligibility')">Start</button></div>
+          <div class="prog-item"><div class="pstep" style="background:var(--gnl);color:var(--gn)">✓</div><div class="pname">Open EduAI</div><div class="pstat" style="background:var(--gnl);color:var(--gn)">Done</div></div>
+          <div class="prog-item" id="chk2"><div class="pstep" id="chk2-ico" style="background:var(--sfl);color:var(--sf)">2</div><div class="pname">Complete your profile</div><div class="pstat" id="chk2-stat" style="background:var(--sfl);color:var(--sf);cursor:pointer" onclick="document.getElementById('modal').classList.remove('hidden')">Set up →</div></div>
+          <div class="prog-item"><div class="pstep" style="background:var(--bg);color:var(--t3)">3</div><div class="pname">Run eligibility check</div><div class="pstat" style="background:var(--bg);color:var(--t3)">Pending</div></div>
+          <div class="prog-item"><div class="pstep" style="background:var(--bg);color:var(--t3)">4</div><div class="pname">Collect documents</div><div class="pstat" style="background:var(--bg);color:var(--t3)">Pending</div></div>
+          <div class="prog-item"><div class="pstep" style="background:var(--bg);color:var(--t3)">5</div><div class="pname">Submit on NSP portal</div><div class="pstat" style="background:var(--bg);color:var(--t3)">Pending</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CHAT -->
+    <div class="panel" id="pn-chat">
+      <div class="chat-wrap">
+        <div class="chat-msgs" id="chatMsgs"></div>
+        <div class="cin-zone">
+          <div class="csugg">
+            <div class="csp" onclick="sendQ('What scholarships am I eligible for?')">🎓 My eligible schemes</div>
+            <div class="csp" onclick="sendQ('NSP Post-Matric Scholarship application steps')">📋 NSP steps</div>
+            <div class="csp" onclick="sendQ('I need income certificate help')">📄 Income cert</div>
+            <div class="csp" onclick="sendQ('Scholarships for girl students in engineering')">👩 Girl schemes</div>
+            <div class="csp" onclick="sendQ('UGC NET JRF fellowship details')">🔬 UGC JRF</div>
+            <div class="csp" onclick="sendQ('Upcoming scholarship deadlines')">📅 Deadlines</div>
+          </div>
+          <div class="cinrow">
+            <textarea class="cin" id="cinput" rows="1" placeholder="Ask anything — 'Am I eligible for NSP?', '2 lakh income OBC BTech scholarships?'…" onkeydown="chatKey(event)" oninput="grow(this)"></textarea>
+            <button class="csend" onclick="doSend()">➤</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ELIGIBILITY -->
+    <div class="panel" id="pn-eligibility">
+      <div class="escroll">
+        <div class="ehero">
+          <div class="ehero-bg">✅</div>
+          <div class="eh">Eligibility Checker</div>
+          <div class="es">Fill in your real details and we'll score each scheme accurately based on your actual eligibility criteria.</div>
+        </div>
+        <div class="eform">
+          <div class="eform-t">📋 Your Details</div>
+          <div class="efgrid">
+            <div class="fg"><label>Full Name</label><input id="ef-name" placeholder="e.g. Priya Sharma"/></div>
+            <div class="fg"><label>Age</label><input id="ef-age" type="number" min="10" max="40" placeholder="e.g. 19"/></div>
+            <div class="fg"><label>Gender</label><select id="ef-gender"><option value="">Select</option><option>Male</option><option>Female</option><option>Other / Transgender</option></select></div>
+            <div class="fg"><label>State</label><select id="ef-state">
+              <option value="">Select State</option>
+              <option>Andhra Pradesh</option><option>Arunachal Pradesh</option><option>Assam</option><option>Bihar</option><option>Chhattisgarh</option><option>Delhi</option><option>Goa</option><option>Gujarat</option><option>Haryana</option><option>Himachal Pradesh</option><option>Jharkhand</option><option>Karnataka</option><option>Kerala</option><option>Madhya Pradesh</option><option>Maharashtra</option><option>Manipur</option><option>Meghalaya</option><option>Mizoram</option><option>Nagaland</option><option>Odisha</option><option>Punjab</option><option>Rajasthan</option><option>Sikkim</option><option>Tamil Nadu</option><option>Telangana</option><option>Tripura</option><option>Uttar Pradesh</option><option>Uttarakhand</option><option>West Bengal</option><option>J&K</option><option>Ladakh</option>
+            </select></div>
+            <div class="fg"><label>Category</label><select id="ef-cat"><option value="">Select</option><option>General</option><option>OBC</option><option>SC</option><option>ST</option><option>EWS</option><option>Minority (Muslim)</option><option>Minority (Christian)</option><option>Minority (Buddhist)</option><option>Minority (Jain)</option><option>Minority (Sikh)</option></select></div>
+            <div class="fg"><label>Annual Family Income</label><select id="ef-inc">
+              <option value="">Select Range</option>
+              <option value="under1">Below ₹1 Lakh</option>
+              <option value="1to2.5">₹1L – ₹2.5L</option>
+              <option value="2.5to4.5">₹2.5L – ₹4.5L</option>
+              <option value="4.5to8">₹4.5L – ₹8L</option>
+              <option value="above8">Above ₹8L</option>
+            </select></div>
+            <div class="fg"><label>Education Level</label><select id="ef-edu">
+              <option value="">Select</option>
+              <option value="9-10">Class 9–10</option>
+              <option value="11-12">Class 11–12</option>
+              <option value="diploma">Diploma / ITI</option>
+              <option value="ug-arts">UG – BA / BCom / BSc</option>
+              <option value="ug-tech">UG – BTech / BE</option>
+              <option value="ug-medical">UG – MBBS / BDS / Nursing</option>
+              <option value="pg">Postgraduate (MA/MSc/MTech)</option>
+              <option value="phd">PhD / Research</option>
+            </select></div>
+            <div class="fg"><label>Last Exam Marks (%)</label><input id="ef-marks" type="number" min="0" max="100" placeholder="e.g. 78"/></div>
+            <div class="fg effull"><label>Stream / Subject</label><select id="ef-stream">
+              <option value="">Select Stream</option>
+              <option value="science">Science (Physics/Chem/Bio/Math)</option>
+              <option value="engineering">Engineering / Technology</option>
+              <option value="medical">Medical / Pharmacy / Nursing</option>
+              <option value="arts">Arts / Humanities / Social Sciences</option>
+              <option value="commerce">Commerce / Management</option>
+              <option value="law">Law</option>
+              <option value="agriculture">Agriculture</option>
+            </select></div>
+          </div>
+          <button class="ebtn" onclick="runElig()">🔍 Find My Eligible Schemes</button>
+        </div>
+        <div id="elig-results" class="hidden">
+          <div class="eres-title">✅ Your Results <span class="ecount" id="eres-count">0 schemes</span></div>
+          <div id="elig-list"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCHEMES -->
+    <div class="panel" id="pn-schemes">
+      <div class="sscroll">
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px">
+          <div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:700">📚 All Education Schemes</div>
+          <div style="font-size:12px;color:var(--t3)">Showing <span id="sch-count">12</span> schemes</div>
+        </div>
+        <div class="fbar">
+          <div class="fp active" onclick="filterSch(this,'all')">All</div>
+          <div class="fp" onclick="filterSch(this,'scholarship')">🎓 Scholarships</div>
+          <div class="fp" onclick="filterSch(this,'fellowship')">🔬 Fellowships</div>
+          <div class="fp" onclick="filterSch(this,'grant')">🏛️ Grants</div>
+          <div class="fp" onclick="filterSch(this,'girls')">👩 For Girls</div>
+          <div class="fp" onclick="filterSch(this,'minority')">☪️ Minority</div>
+          <div class="fp" onclick="filterSch(this,'technical')">⚙️ Technical</div>
+          <div class="fp" onclick="filterSch(this,'research')">🔬 Research</div>
+          <div class="fp" onclick="filterSch(this,'northeast')">🗺️ North-East</div>
+          <div class="fp" onclick="filterSch(this,'disabled')">♿ Specially-Abled</div>
+        </div>
+        <div class="sgrid" id="schGrid"></div>
+      </div>
+    </div>
+
+    <!-- DEADLINES -->
+    <div class="panel" id="pn-deadlines">
+      <div class="dlscroll">
+        <div class="dlalert">⚡ <strong>NSP deadline is in 8 days</strong> — Apply immediately at scholarships.gov.in</div>
+        <div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin-bottom:14px">📅 Scholarship Deadlines 2025</div>
+        <div id="dlList"></div>
+      </div>
+    </div>
+
+    <!-- NEWS -->
+    <div class="panel" id="pn-news">
+      <div class="nscroll">
+        <div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin-bottom:16px">🗞️ Education News & Updates</div>
+        <div class="news-card"><div class="news-ico" style="background:var(--rdl)">🚨</div><div><div class="news-tag" style="color:var(--rd)">URGENT</div><div class="news-title">NSP 2025-26 Registration Now Open</div><div class="news-sub">National Scholarship Portal has opened fresh applications for 2025-26 session. Students from Class 11 onwards in OBC/SC/ST/Minority/EWS categories can apply.</div><div class="news-meta">📅 Oct 20, 2025 · Ministry of Education</div></div></div>
+        <div class="news-card"><div class="news-ico" style="background:var(--gnl)">🆕</div><div><div class="news-tag" style="color:var(--gn)">NEW SCHEME</div><div class="news-title">PM-YASASVI Scholarship 2025 Applications Begin</div><div class="news-sub">YASASVI Pre-Matric and Post-Matric scholarships for OBC, EBC, and DNT students — up to ₹1.25 lakh/year. Exam-based selection.</div><div class="news-meta">📅 Oct 15, 2025 · Ministry of Social Justice</div></div></div>
+        <div class="news-card"><div class="news-ico" style="background:var(--bll)">📢</div><div><div class="news-tag" style="color:var(--bl)">ANNOUNCEMENT</div><div class="news-title">CUET UG 2026 Registration Opens January 2026</div><div class="news-sub">National Testing Agency (NTA) will open CUET UG 2026 applications from January 15. Over 260+ central universities participate.</div><div class="news-meta">📅 Oct 18, 2025 · NTA / UGC</div></div></div>
+        <div class="news-card"><div class="news-ico" style="background:var(--gdl)">💰</div><div><div class="news-tag" style="color:var(--gd)">POLICY UPDATE</div><div class="news-title">UGC Increases NET JRF Monthly Stipend</div><div class="news-sub">UGC has revised JRF fellowship from ₹31,000 to ₹37,000/month effective from this year. SRF stipend increased to ₹42,000/month.</div><div class="news-meta">📅 Oct 10, 2025 · UGC</div></div></div>
+        <div class="news-card"><div class="news-ico" style="background:var(--pul)">🔬</div><div><div class="news-tag" style="color:var(--pu)">RESEARCH</div><div class="news-title">ANRF Opens First Funding Call for Young Researchers</div><div class="news-sub">Anusandhan National Research Foundation (ANRF) invites research grant applications from early-career researchers. Grants up to ₹50 lakh.</div><div class="news-meta">📅 Oct 5, 2025 · ANRF / DST</div></div></div>
+        <div class="news-card"><div class="news-ico" style="background:var(--gnl)">🏫</div><div><div class="news-tag" style="color:var(--gn)">ADMISSION</div><div class="news-title">JEE Main 2026 Exam Dates Announced</div><div class="news-sub">JEE Main 2026 Session 1 scheduled for January 22–30, 2026. Session 2 in April. Registrations begin December 2025 on jeemain.nta.nic.in.</div><div class="news-meta">📅 Oct 1, 2025 · NTA</div></div></div>
+      </div>
+    </div>
+
+    <!-- EXAM CALENDAR -->
+    <div class="panel" id="pn-exams">
+      <div class="examscroll">
+        <div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin-bottom:4px">📝 National Exam Calendar 2025-26</div>
+        <div style="font-size:12.5px;color:var(--t3);margin-bottom:18px">Click any exam for details and preparation tips</div>
+        <div class="exam-month">📅 October – November 2025</div>
+        <div class="exam-card" onclick="sendQ('JEE Main 2026 preparation tips');goPanel('chat')">
+          <div class="exam-date" style="background:var(--rdl)"><div class="exam-day" style="color:var(--rd)">30</div><div class="exam-mon" style="color:var(--rd)">Oct</div></div>
+          <div><div class="exam-name">NSP Scholarship Last Date</div><div class="exam-org">National Scholarship Portal</div><div class="exam-tags"><div class="exam-tag b-sf">DEADLINE</div><div class="exam-tag b-gn">All Categories</div></div></div>
+          <div class="exam-pill" style="background:var(--rdl);color:var(--rd)">⚡ Urgent</div>
+        </div>
+        <div class="exam-card" onclick="sendQ('CUET UG 2026 eligibility and syllabus');goPanel('chat')">
+          <div class="exam-date" style="background:var(--bll)"><div class="exam-day" style="color:var(--bl)">15</div><div class="exam-mon" style="color:var(--bl)">Nov</div></div>
+          <div><div class="exam-name">AICTE Pragati Scholarship</div><div class="exam-org">AICTE Portal</div><div class="exam-tags"><div class="exam-tag b-gd">DEADLINE</div><div class="exam-tag b-pk">Girls Only</div></div></div>
+          <div class="exam-pill" style="background:var(--gdl);color:var(--gd)">23 days</div>
+        </div>
+        <div class="exam-month">📅 January – April 2026</div>
+        <div class="exam-card" onclick="sendQ('JEE Main 2026 preparation tips and important topics');goPanel('chat')">
+          <div class="exam-date" style="background:var(--sfl)"><div class="exam-day" style="color:var(--sf)">22</div><div class="exam-mon" style="color:var(--sf)">Jan</div></div>
+          <div><div class="exam-name">JEE Main 2026 (Session 1)</div><div class="exam-org">NTA · jeemain.nta.nic.in</div><div class="exam-tags"><div class="exam-tag b-bl">Engineering</div><div class="exam-tag b-gn">National</div></div></div>
+          <div class="exam-pill" style="background:var(--gnl);color:var(--gn)">~88 days</div>
+        </div>
+        <div class="exam-card" onclick="sendQ('NEET 2026 preparation strategy and syllabus');goPanel('chat')">
+          <div class="exam-date" style="background:var(--gnl)"><div class="exam-day" style="color:var(--gn)">15</div><div class="exam-mon" style="color:var(--gn)">Jan</div></div>
+          <div><div class="exam-name">CUET UG 2026 Registration</div><div class="exam-org">NTA · cuet.nta.nic.in</div><div class="exam-tags"><div class="exam-tag b-sf">UG Admission</div><div class="exam-tag b-bl">260+ Universities</div></div></div>
+          <div class="exam-pill" style="background:var(--gnl);color:var(--gn)">Upcoming</div>
+        </div>
+        <div class="exam-card" onclick="sendQ('UGC NET 2026 syllabus and best preparation strategy');goPanel('chat')">
+          <div class="exam-date" style="background:var(--pul)"><div class="exam-day" style="color:var(--pu)">Feb</div><div class="exam-mon" style="color:var(--pu)">2026</div></div>
+          <div><div class="exam-name">UGC NET / JRF 2026</div><div class="exam-org">NTA · ugcnet.nta.nic.in</div><div class="exam-tags"><div class="exam-tag b-pu">Research</div><div class="exam-tag b-bl">Fellowship</div></div></div>
+          <div class="exam-pill" style="background:var(--pul);color:var(--pu)">Upcoming</div>
+        </div>
+        <div class="exam-card" onclick="sendQ('NEET UG 2026 preparation tips');goPanel('chat')">
+          <div class="exam-date" style="background:var(--gnl)"><div class="exam-day" style="color:var(--gn)">May</div><div class="exam-mon" style="color:var(--gn)">2026</div></div>
+          <div><div class="exam-name">NEET UG 2026</div><div class="exam-org">NTA · neet.nta.nic.in</div><div class="exam-tags"><div class="exam-tag b-gn">Medical</div><div class="exam-tag b-sf">National</div></div></div>
+          <div class="exam-pill" style="background:var(--gnl);color:var(--gn)">Upcoming</div>
+        </div>
+        <div class="exam-card" onclick="sendQ('GATE 2026 syllabus and preparation tips');goPanel('chat')">
+          <div class="exam-date" style="background:var(--bll)"><div class="exam-day" style="color:var(--bl)">Feb</div><div class="exam-mon" style="color:var(--bl)">2026</div></div>
+          <div><div class="exam-name">GATE 2026</div><div class="exam-org">IIT Delhi · gate2026.iitr.ac.in</div><div class="exam-tags"><div class="exam-tag b-bl">Engineering PG</div><div class="exam-tag b-pu">PSU Jobs</div></div></div>
+          <div class="exam-pill" style="background:var(--bll);color:var(--bl)">Upcoming</div>
+        </div>
+        <div class="exam-card" onclick="sendQ('CAT exam preparation strategy');goPanel('chat')">
+          <div class="exam-date" style="background:var(--gdl)"><div class="exam-day" style="color:var(--gd)">Nov</div><div class="exam-mon" style="color:var(--gd)">2025</div></div>
+          <div><div class="exam-name">CAT 2025 (MBA)</div><div class="exam-org">IIM · iimcat.ac.in</div><div class="exam-tags"><div class="exam-tag b-gd">Management</div><div class="exam-tag b-sf">IIM Admission</div></div></div>
+          <div class="exam-pill" style="background:var(--gdl);color:var(--gd)">~30 days</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- SCHOLARSHIP CALCULATOR -->
+    <div class="panel" id="pn-calculator">
+      <div class="calcscroll">
+        <div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin-bottom:4px">🧮 Scholarship Benefit Calculator</div>
+        <div style="font-size:12.5px;color:var(--t3);margin-bottom:18px">Estimate how much you can earn through scholarships over your degree</div>
+        <div class="calc-card">
+          <div class="calc-t">🎓 Degree Scholarship Estimate</div>
+          <div class="calc-row">
+            <div class="fg"><label>Course Duration (Years)</label><select id="cc-dur"><option value="2">2 years</option><option value="3" selected>3 years</option><option value="4">4 years</option><option value="5">5 years</option></select></div>
+            <div class="fg"><label>Your Category</label><select id="cc-cat"><option value="general">General</option><option value="obc">OBC</option><option value="sc">SC</option><option value="st">ST</option><option value="ews">EWS</option><option value="minority">Minority</option></select></div>
+            <div class="fg"><label>Your Education Level</label><select id="cc-edu"><option value="11-12">Class 11–12</option><option value="ug" selected>Undergraduate</option><option value="ug-tech">UG Technical (BTech)</option><option value="pg">Postgraduate</option><option value="phd">PhD / Research</option></select></div>
+            <div class="fg"><label>Your Income Bracket</label><select id="cc-inc"><option value="under1">Below ₹1L</option><option value="1to2.5">₹1L–₹2.5L</option><option value="2.5to4.5">₹2.5L–₹4.5L</option><option value="4.5to8">₹4.5L–₹8L</option></select></div>
+          </div>
+          <div class="fg" style="margin-bottom:12px"><label>Your Gender</label><select id="cc-gen"><option value="male">Male</option><option value="female">Female</option></select></div>
+          <button class="ebtn" style="margin-top:0" onclick="calcBenefit()">🧮 Calculate My Benefit</button>
+          <div id="calc-result" class="hidden">
+            <div class="calc-result" id="calc-res-card">
+              <div class="calc-rl">Estimated Annual Scholarship</div>
+              <div class="calc-rv" id="calc-annual">—</div>
+              <div class="calc-rv2" id="calc-total">—</div>
+            </div>
+            <div style="margin-top:12px" id="calc-breakdown"></div>
+          </div>
+        </div>
+        <div class="calc-card">
+          <div class="calc-t">📊 Loan vs Scholarship Comparison</div>
+          <div class="calc-row">
+            <div class="fg"><label>Annual Tuition Fee (₹)</label><input id="lc-fee" type="number" placeholder="e.g. 100000" value="100000"/></div>
+            <div class="fg"><label>Expected Annual Scholarship (₹)</label><input id="lc-sch" type="number" placeholder="e.g. 25000" value="25000"/></div>
+          </div>
+          <button class="ebtn" style="margin-top:4px" onclick="calcLoan()">📊 Compare</button>
+          <div id="loan-result" class="hidden">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:12px" id="loan-cards"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- COLLEGE COMPARE -->
+    <div class="panel" id="pn-compare">
+      <div class="compscroll">
+        <div style="font-family:'Syne',sans-serif;font-size:15px;font-weight:700;margin-bottom:4px">🏛️ College & Course Compare</div>
+        <div style="font-size:12.5px;color:var(--t3);margin-bottom:18px">Compare top colleges across fees, NIRF rank, placements and scholarships available</div>
+        <div class="comp-search">
+          <select class="comp-in" id="comp-type" style="max-width:180px">
+            <option value="iit">IITs (BTech)</option>
+            <option value="nit">NITs (BTech)</option>
+            <option value="central">Central Universities</option>
+            <option value="medical">Medical Colleges (MBBS)</option>
+            <option value="iim">IIMs (MBA)</option>
+          </select>
+          <button class="comp-btn" onclick="renderCompare()">Compare Now</button>
+        </div>
+        <div class="ctable" id="comp-table"></div>
+      </div>
+    </div>
+
+    <!-- PROFILE -->
+    <div class="panel" id="pn-profile">
+      <div class="pscroll">
+        <div class="prof-hero">
+          <div class="profav" id="profAv">S</div>
+          <div>
+            <div class="prof-name" id="profName">Student</div>
+            <div class="prof-sub" id="profSub">Complete your profile for personalised matches</div>
+            <div class="prof-tags" id="profTags"><div class="prof-tag b-sf">Profile Incomplete</div></div>
+          </div>
+        </div>
+        <div class="pgrid">
+          <div class="pic">
+            <div class="pic-t">Personal Info</div>
+            <div class="pic-row"><span class="pk">Name</span><span class="pv" id="pi-name">—</span></div>
+            <div class="pic-row"><span class="pk">Age</span><span class="pv" id="pi-age">—</span></div>
+            <div class="pic-row"><span class="pk">Gender</span><span class="pv" id="pi-gender">—</span></div>
+            <div class="pic-row"><span class="pk">State</span><span class="pv" id="pi-state">—</span></div>
+          </div>
+          <div class="pic">
+            <div class="pic-t">Academic Info</div>
+            <div class="pic-row"><span class="pk">Category</span><span class="pv" id="pi-cat">—</span></div>
+            <div class="pic-row"><span class="pk">Education</span><span class="pv" id="pi-edu">—</span></div>
+            <div class="pic-row"><span class="pk">Marks</span><span class="pv" id="pi-marks">—</span></div>
+            <div class="pic-row"><span class="pk">Income</span><span class="pv" id="pi-inc">—</span></div>
+          </div>
+        </div>
+        <div style="margin-top:14px;display:flex;gap:10px">
+          <button class="btnp" onclick="document.getElementById('modal').classList.remove('hidden')" style="font-size:13px;padding:10px 18px">✏️ Edit Profile</button>
+          <button class="btns" onclick="goPanel('eligibility')" style="font-size:13px;padding:10px 18px">🔍 Recheck Eligibility</button>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /main -->
+</div><!-- /pg-app -->
+</div><!-- /shell -->
+
+<!-- ONBOARDING MODAL -->
+<div class="mo hidden" id="modal">
+  <div class="md">
+    <div class="md-head">
+      <div class="md-ico" id="m-ico">👋</div>
+      <div class="md-h" id="m-h">Welcome to EduAI!</div>
+      <div class="md-sub" id="m-sub">4 quick questions to find your best schemes.</div>
+      <div class="md-dots" id="m-dots">
+        <div class="md-dot active"></div><div class="md-dot"></div><div class="md-dot"></div><div class="md-dot"></div>
+      </div>
+    </div>
+    <div class="md-body">
+      <div class="md-step active" id="ms1">
+        <div class="md-ig"><div class="md-il">Your Name</div><input class="md-in" id="m-name" placeholder="e.g. Rahul Kumar"/></div>
+        <div class="md-ig"><div class="md-il">Your Age</div><input class="md-in" id="m-age" type="number" placeholder="e.g. 20"/></div>
+        <div class="md-ig"><div class="md-il">Gender</div><select class="md-in" id="m-gender"><option value="">Select</option><option>Male</option><option>Female</option><option>Other / Transgender</option></select></div>
+      </div>
+      <div class="md-step" id="ms2">
+        <div class="md-ig"><div class="md-q">Which state are you from?</div><select class="md-in" id="m-state"><option value="">Select your state</option><option>Andhra Pradesh</option><option>Assam</option><option>Bihar</option><option>Chhattisgarh</option><option>Delhi</option><option>Gujarat</option><option>Haryana</option><option>Himachal Pradesh</option><option>Jharkhand</option><option>Karnataka</option><option>Kerala</option><option>Madhya Pradesh</option><option>Maharashtra</option><option>Manipur</option><option>Meghalaya</option><option>Nagaland</option><option>Odisha</option><option>Punjab</option><option>Rajasthan</option><option>Tamil Nadu</option><option>Telangana</option><option>Tripura</option><option>Uttar Pradesh</option><option>Uttarakhand</option><option>West Bengal</option><option>J&K</option></select></div>
+        <div class="md-q" style="margin-top:12px">Your category?</div>
+        <div class="md-opts">
+          <div class="md-opt" onclick="selOpt(this,'cat','General')">General</div>
+          <div class="md-opt" onclick="selOpt(this,'cat','OBC')">OBC</div>
+          <div class="md-opt" onclick="selOpt(this,'cat','SC')">SC</div>
+          <div class="md-opt" onclick="selOpt(this,'cat','ST')">ST</div>
+          <div class="md-opt" onclick="selOpt(this,'cat','EWS')">EWS</div>
+          <div class="md-opt" onclick="selOpt(this,'cat','Minority')">Minority</div>
+        </div>
+      </div>
+      <div class="md-step" id="ms3">
+        <div class="md-q">What are you currently studying?</div>
+        <div class="md-opts" style="grid-template-columns:1fr">
+          <div class="md-opt" onclick="selOpt(this,'edu','9-10')">📚 Class 9 or 10</div>
+          <div class="md-opt" onclick="selOpt(this,'edu','11-12')">📗 Class 11 or 12</div>
+          <div class="md-opt" onclick="selOpt(this,'edu','diploma')">🔧 Diploma / ITI</div>
+          <div class="md-opt" onclick="selOpt(this,'edu','ug-arts')">🎓 Undergraduate (BA/BSc/BCom)</div>
+          <div class="md-opt" onclick="selOpt(this,'edu','ug-tech')">⚙️ Undergraduate (BTech/BE)</div>
+          <div class="md-opt" onclick="selOpt(this,'edu','pg')">🔬 Postgraduate / PhD / Research</div>
+        </div>
+      </div>
+      <div class="md-step" id="ms4">
+        <div class="md-q">Annual family income?</div>
+        <div class="md-opts" style="grid-template-columns:1fr">
+          <div class="md-opt" onclick="selOpt(this,'inc','under1')">Below ₹1 Lakh</div>
+          <div class="md-opt" onclick="selOpt(this,'inc','1to2.5')">₹1 Lakh – ₹2.5 Lakh</div>
+          <div class="md-opt" onclick="selOpt(this,'inc','2.5to4.5')">₹2.5 Lakh – ₹4.5 Lakh</div>
+          <div class="md-opt" onclick="selOpt(this,'inc','4.5to8')">₹4.5 Lakh – ₹8 Lakh</div>
+          <div class="md-opt" onclick="selOpt(this,'inc','above8')">Above ₹8 Lakh</div>
+        </div>
+      </div>
+    </div>
+    <div class="md-foot">
+      <button class="md-skip" onclick="finishOnboard()">Skip for now</button>
+      <button class="md-next" id="m-next" onclick="mNext()">Continue →</button>
+    </div>
+  </div>
+</div>
+
+
+
+<!-- ── JavaScript Modules ── -->
+<!--
+  Load order matters — each module depends on the ones above it:
+    eligibility-engine  →  state  →  navigation
+    →  onboarding  →  ui  →  eligibility  →  panels  →  chat  →  init
+-->
+<script src="js/eligibility-engine.js"></script>
+<script src="js/state.js"></script>
+<script src="js/navigation.js"></script>
+<script src="js/onboarding.js"></script>
+<script src="js/ui.js"></script>
+<script src="js/eligibility.js"></script>
+<script src="js/panels.js"></script>
+<script src="js/chat.js"></script>
+<script src="js/init.js"></script>
+
+</body>
+</html>

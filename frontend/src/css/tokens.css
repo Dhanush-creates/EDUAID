@@ -1,0 +1,63 @@
+/* ════════════════════════════════════════════════
+   EduAI — Design Tokens & Global Reset
+   Stage 1 · Ministry of Education
+   ════════════════════════════════════════════════ */
+
+:root {
+  /* Brand colours */
+  --sf: #E8610A;   --sf2: #F47B2A;  --sfl: #FFF0E6;  /* Saffron */
+  --gn: #0A7A2E;   --gn2: #12A040;  --gnl: #E6F5EB;  /* India Green */
+  --bl: #1A3FC4;   --bl2: #3B5BDB;  --bll: #EBF0FF;  /* Deep Blue */
+  --gd: #B8860B;   --gdl: #FFF8E6;                    /* Gold */
+  --rd: #C0392B;   --rdl: #FEECEC;                    /* Red */
+  --pu: #6D28D9;   --pul: #F3EEFF;                    /* Purple */
+  --pk: #BE185D;   --pkl: #FFF0F7;                    /* Pink */
+
+  /* Backgrounds & surfaces */
+  --bg:   #F7F4EF;
+  --card: #FFFFFF;
+  --bdr:  #E4DDD4;
+
+  /* Text */
+  --tx: #1C160E;  /* Primary */
+  --t2: #4A3F33;  /* Secondary */
+  --t3: #8B7D6B;  /* Muted */
+  --t4: #C4B5A5;  /* Placeholder */
+
+  /* Shadows */
+  --sh:  rgba(0,0,0,.06);
+  --sh2: rgba(0,0,0,.12);
+}
+
+/* ── Reset ── */
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+html, body {
+  height: 100%;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background: var(--bg);
+  color: var(--tx);
+  overflow: hidden;
+}
+
+.hidden { display: none !important; }
+
+/* ── India Flag bar ── */
+.flag { height: 4px; display: flex; position: fixed; top: 0; left: 0; right: 0; z-index: 9999; }
+.flag div:nth-child(1) { flex: 1; background: var(--sf); }
+.flag div:nth-child(2) { flex: 1; background: #fff; border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; }
+.flag div:nth-child(3) { flex: 1; background: var(--gn); }
+
+/* ── Shell layout ── */
+.shell  { display: flex; height: 100vh; padding-top: 4px; }
+.page   { display: none; width: 100%; height: 100%; overflow: hidden; }
+.page.active { display: flex; }
+
+/* ── Tag colour helpers ── */
+.b-sf { background: var(--sfl); color: var(--sf); }
+.b-gn { background: var(--gnl); color: var(--gn); }
+.b-bl { background: var(--bll); color: var(--bl); }
+.b-gd { background: var(--gdl); color: var(--gd); }
+.b-pu { background: var(--pul); color: var(--pu); }
+.b-pk { background: var(--pkl); color: var(--pk); }
+.b-rd { background: var(--rdl); color: var(--rd); }
