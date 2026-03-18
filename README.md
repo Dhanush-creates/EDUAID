@@ -231,6 +231,7 @@ vercel --prod
 3. Set **Root Directory** to `frontend/src`
 4. Click Deploy — done in ~30 seconds
 5. Go to **Project Settings → Domains** to set a custom domain
+6. https://eduaid-seven.vercel.app/
 
 **After deploying, update your README:**
 ```
